@@ -12,3 +12,7 @@ extern struct node textbuffer[100];
 extern int head;
 extern int tail;
 extern int free_index;
+
+/* Function prototypes */
+void print();
+
