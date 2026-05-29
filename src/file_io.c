@@ -8,6 +8,11 @@
 #include <stdio.h>
 #include <string.h>
 
+struct node textbuffer[100];
+int head = -1;
+int tail = -1;
+int free_index = 0;
+
 void edit(char *filename) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
