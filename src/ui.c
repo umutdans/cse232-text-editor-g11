@@ -50,5 +50,24 @@ void print() {
  * TS7: cursorLine() and cursorChar() — to be implemented by Member 4
  * -------------------------------------------------------------------------- */
  
-/* int cursorLine() { ... } */
-/* int cursorChar()  { ... } */
+int cursorLine() {
+    int y, x;
+    getyx(stdscr, y, x); 
+    
+    int curr = head;
+    int count = 0;
+    
+    while (curr != -1 && count < y) {
+        curr = textbuffer[curr].next;
+        count++;
+    }
+    
+    return curr; 
+}
+
+int cursorChar() {
+    int y, x;
+    getyx(stdscr, y, x);
+    
+    return x; 
+}
