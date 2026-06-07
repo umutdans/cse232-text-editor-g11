@@ -9,28 +9,15 @@
 
 /* --------------------------------------------------------------------------
  * TS6: print()
- *
- * Refreshes the entire screen by traversing the textbuffer[] linked list
- * starting from head and following the "next" links.
- *
- * Layout:
- *   Row 0  -> first statement
- *   Row 1  -> second statement
- *   ...
- *   Row N  -> last statement
- *   Row N+1-> "> " prompt line
- *
- * After drawing, the cursor is left on the prompt line so the user
- * can type commands.
+ * Refreshes the entire screen by traversing the textbuffer[] linked list.
  * -------------------------------------------------------------------------- */
 void print() {
     clear();   /* Erase everything on the NCURSES screen */
  
-    int curr = head;   /* Start from the first valid node */
-    int row  = 0;      /* Current screen row              */
+    int curr = head;   
+    int row  = 0;      
  
-    /* Traverse the linked list and print each statement on its own row.
-     * The spec says maximum text size is 30 lines, so we stop at 30. */
+    /* Traverse the linked list and print each statement */
     while (curr != -1 && row < 30) {
         mvprintw(row, 0, "%s", textbuffer[curr].statement);
         curr = textbuffer[curr].next;
@@ -39,15 +26,22 @@ void print() {
  
     /* Print the command prompt on the line right after the last statement */
     mvprintw(row, 0, "> ");
+
+    /* ==========================================================================
+     * DYNAMIC HELP MENU (Floats right below the prompt)
+     * ========================================================================== */
+    mvprintw(row + 1, 0, "Commands can be used by pressing the key inside []");
+    mvprintw(row + 2, 0, "Press ENTER to lock curser location first then you can use commands: [I]nsert  [D]elete  [R]eplace");
+    mvprintw(row + 3, 0, "These commands can be used any time: [E]dit  [S]ave  [G]arbage Collect  [Q]uit");
  
-    /* Move the cursor to just after the prompt, ready for user input */
+    /* Move the cursor back up to the > prompt so it's ready for action */
     move(row, 2);
  
-    refresh(); /* Push all changes to the actual terminal screen */
+    refresh(); 
 }
  
 /* --------------------------------------------------------------------------
- * TS7: cursorLine() and cursorChar() — to be implemented by Member 4
+ * TS7: cursorLine() and cursorChar()
  * -------------------------------------------------------------------------- */
  
 int cursorLine() {

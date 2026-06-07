@@ -1,6 +1,0 @@
-I REPLACED THE VERY FIRST LINE.
-THIS IS A BRAND NEW LINE INJECTED.
-This text is only for editing.
-I love apples.
-I love oranges.
-123 + 123 = 246

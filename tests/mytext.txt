@@ -1,6 +1,0 @@
-This is a dummy text to edit.
-This text is only for editing.
-This is a random text.
-I love apples.
-I love oranges.
-123 + 123 = 246
